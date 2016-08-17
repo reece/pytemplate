@@ -92,3 +92,4 @@ ENV/
 *~
 *.bak
 *.orig
+doc/_build

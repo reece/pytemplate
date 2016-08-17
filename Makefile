@@ -32,8 +32,8 @@ bdist bdist_egg bdist_wheel build build_sphinx install sdist: %:
 	python setup.py $@
 
 #=> docs -- make sphinx docs
-.PHONY: docs
-docs: setup changelog
+.PHONY: doc docs
+doc docs: develop
 	# RTD makes json. Build here to ensure that it works.
 	make -C doc html json
 

@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-package_name = "namespace.pkg"
+package_name = "biocommons.pkg"
 short_description = "This is the short description"
 long_description = """This is a longer decsription about the project. It may span multiple lines."""
 
@@ -35,6 +35,7 @@ setup(
     setup_requires=[
 	"setuptools_scm",
         "sphinx",
+        "sphinx_rtd_theme",
         "sphinxcontrib-fulltoc",
         "wheel",
     ],

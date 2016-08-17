@@ -13,10 +13,7 @@ except pkg_resources.DistributionNotFound as e:
     warnings.warn("can't get __version__ because %s package isn't installed" % __package__, Warning)
     __version__ = None
 
-from .fastadir import FastaDir
-
 logger.info(__name__ + " " + __version__)
-
 
 
 # <LICENSE>

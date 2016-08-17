@@ -17,7 +17,8 @@ import os
 
 import sphinx_rtd_theme
 
-import biocommons.pytemplate
+import biocommons.pkg
+version = biocommons.pkg.__version__
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -63,7 +64,7 @@ copyright = u'2015, '+authors
 # built documents.
 #
 # The short X.Y version.
-version = biocommons.pytemplate.__version__
+# version = biocommons.pytemplate.__version__
 # The full version, including alpha/beta/rc tags.
 release = version
 
