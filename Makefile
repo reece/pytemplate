@@ -1,15 +1,41 @@
+# Makefile for Python project
+
 .DELETE_ON_ERROR:
 .PHONY: FORCE
 .SUFFIXES:
 
 SHELL:=/bin/bash -o pipefail
+SELF:=$(firstword $(MAKEFILE_LIST))
 
+
+############################################################################
+#= BASIC USAGE
+default: help
+
+#=> help -- display this help message
+help:
+	@sbin/makefile-extract-documentation "${SELF}"
+
+############################################################################
+#= SETUP, INSTALLATION, PACKAGING
 
 #=> develop: install package in develop mode
+.PHONY: develop
+develop: %:
+	[ -f requirements.txt ] && pip install --upgrade -r requirements.txt || true
+	python setup.py $*
+
 #=> install: install package
-.PHONY: develop install
-develop install:
+#=> bdist bdist_egg bdist_wheel build build_sphinx install sdist
+.PHONY: bdist bdist_egg bdist_wheel build build_sphinx install sdist
+bdist bdist_egg bdist_wheel build build_sphinx install sdist: %:
 	python setup.py $@
+
+#=> docs -- make sphinx docs
+.PHONY: docs
+docs: setup changelog
+	# RTD makes json. Build here to ensure that it works.
+	make -C doc html json
 
 # N.B. Although code is stored in github, I use hg and hg-git on the command line
 #=> reformat: reformat code with yapf and commit
